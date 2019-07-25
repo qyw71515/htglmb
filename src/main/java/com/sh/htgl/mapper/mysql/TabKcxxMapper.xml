@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sh.htgl.dao.ITabKcglDAO">
+	<sql id="fragment_kcxx">
+
+		<if test="id !=null and id !=''">
+			and id = #{id}
+		</if>
+		<if test="kclx !=null and kclx !=''">
+			and kclx = #{kclx}
+		</if>
+
+
+	</sql>
+
+	<select id="getCount" resultType="int" parameterType="Map">
+		select count(*) from tab_kcxx where 1=1
+		<include refid="fragment_kcxx" />
+	</select>
+
+	<select id="findKcglByPage" resultType="TabKcxx"
+		parameterType="Map">
+		select * from tab_kcxx where 1=1
+		<include refid="fragment_kcxx" />
+   	<![CDATA[
+	    order by ${sort} ${order} limit #{startRow},#{rows}
+	]]>
+	</select>
+
+	<insert id="insert" parameterType="Map">
+		insert into tab_kcxx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="kcmc != null">
+				kcmc,
+			</if>
+			<if test="kcxs != null">
+				kcxs,
+			</if>
+			<if test="kclx != null">
+				kclx,
+			</if>
+			<if test="xfen != null">
+				xfen,
+			</if>
+			<if test="kkxq != null">
+				kkxq,
+			</if>
+			<if test="syxs != null">
+				syxs,
+			</if>
+			<if test="sfsyjx != null">
+				sfsyjx,
+			</if>
+			<if test="sfsjlkc != null">
+				sfsjlkc,
+			</if>
+			<if test="kkxy != null">
+				kkxy,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="kcmc != null">
+				#{kcmc,jdbcType=VARCHAR},
+			</if>
+			<if test="kcxs != null">
+				#{kcxs,jdbcType=VARCHAR},
+			</if>
+			<if test="kclx != null">
+				#{kclx,jdbcType=VARCHAR},
+			</if>
+			<if test="xfen != null">
+				#{xfen,jdbcType=VARCHAR},
+			</if>
+			<if test="kkxq != null">
+				#{kkxq,jdbcType=VARCHAR},
+			</if>
+			<if test="syxs != null">
+				#{syxs,jdbcType=VARCHAR},
+			</if>
+			<if test="sfsyjx != null">
+				#{sfsyjx,jdbcType=VARCHAR},
+			</if>
+			<if test="sfsjlkc != null">
+				#{sfsjlkc,jdbcType=VARCHAR},
+			</if>
+			<if test="kkxy != null">
+				#{kkxy,jdbcType=VARCHAR},
+			</if>
+
+		</trim>
+	</insert>
+	<delete id="delete" parameterType="Map">
+		delete from tab_kcxx
+		where id =
+		#{id,jdbcType=VARCHAR}
+	</delete>
+	<update id="update" parameterType="Map">
+		update tab_kcxx
+		<set>
+
+			<if test="kcmc != null">
+				kcmc = #{kcmc,jdbcType=VARCHAR},
+			</if>
+			<if test="kcxs != null">
+				kcxs = #{kcxs,jdbcType=VARCHAR},
+			</if>
+			<if test="kclx != null">
+				kclx = #{kclx,jdbcType=VARCHAR},
+			</if>
+			<if test="xfen != null">
+				xfen = #{xfen,jdbcType=VARCHAR},
+			</if>
+			<if test="kkxq != null">
+				kkxq = #{kkxq,jdbcType=VARCHAR},
+			</if>
+			<if test="syxs != null">
+				syxs = #{syxs,jdbcType=VARCHAR},
+			</if>
+			<if test="sfsyjx != null">
+				sfsyjx = #{sfsyjx,jdbcType=VARCHAR},
+			</if>
+			<if test="sfsjlkc != null">
+				sfsjlkc = #{sfsjlkc,jdbcType=VARCHAR},
+			</if>
+			<if test="kkxy != null">
+				kkxy = #{kkxy,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=VARCHAR}
+	</update>
+
+
+
+
+
+
+
+
+</mapper>
